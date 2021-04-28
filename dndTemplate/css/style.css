@@ -1,0 +1,9 @@
+.inline {
+ display:inline-block;
+}
+
+.statDiv{
+    vertical-align: top;
+    display:inline-block;
+    align-self: center;
+}

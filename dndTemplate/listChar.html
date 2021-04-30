@@ -1,13 +1,20 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    .statDiv{
+<style >
+.statDiv{
     vertical-align: top;
-    display:inline-block;
+    /*display:inline-block;*/
     align-self: center;
+}
+
+#statsTable td{
+	min-width: 100px;
+	-webkit-user-modify: read-write;
+    -moz-user-modify: read-write;
+    user-modify: read-write;
 }
 body {
   margin: 0;
@@ -63,19 +70,53 @@ body {
     display: block;
     text-align: left;
   }
+
+
 }
 </style>
 </head>
-<body>
+<body id="test">
 
 <div class="topnav" id="myTopnav">
   <a href="#stats" class="tablink" onclick="openPage('stats', this, 'green')" id="defaultOpen">Статы</a>
-  <a href="#hps" class="tablink" onclick="openPage('hps', this, 'green')">Хиты</a>
+  <a href="#atacks" class="tablink" onclick="openPage('hps', this, 'green')">Основные атаки</a>
   <a href="#skills" class="tablink" onclick="openPage('skills', this, 'green')">Заклинания и навыки</a>
   <a href="#about" class="tablink" onclick="openPage('About', this, 'green')">Инвентарь</a>
+  <a href="#s" class="tablink" onclick="up()">s</a>
+   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
+  
+</div>
+<button type="button" onclick="addNewColl()" class="btn add-col">Добавить колонку</button>
+<button type="button" onclick="dellLastColl()" class="btn add-col">Добавить колонку</button>
+
+<div >
+	<table  id="statsTable" border="1">
+		<tr>
+			<td>КД</td>
+			<td colspan="2"><textarea ></textarea></td>
+			<td colspan="2"><textarea ></textarea></td>
+			
+		</tr>
+		<tr >
+			<td>ХП</td>
+			<td colspan="2"><textarea ></textarea></td>
+			<td colspan="2"><textarea ></textarea></td>
+		</tr>
+		<tr>
+			<td>МП</td>
+			<td colspan="2"><textarea ></textarea></td>
+			<td colspan="2"><textarea ></textarea></td>
+		</tr>
+		<tr>
+			<td>Доп ХП</td>
+			<td colspan="2"><textarea ></textarea></td>
+			<td colspan="2"><textarea ></textarea></td>
+		</tr>
+		
+	</table>	
 </div>
 
 
@@ -83,40 +124,35 @@ body {
 <div id="stats" class="tabcontent">
     <div>
 				<div class="statDiv">
-
-					<table class="topAlgin" border="1" width="100%">
-						<tr>
-							<td  width="200" colspan="3">Сила</td>
-						</tr>
-						<tr>
-							<td colspan="2" contenteditable="true">16</td>
-							<td><input type="checkbox"><span contenteditable="true">+6</span></td>
-						</tr>
-						<tr>
-							<td colspan="2">+3</td>
-							<td>Спасбросок</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td contenteditable="true" >+3</td>
-							<td>Атлетика</td>
-						</tr>
-					</table>
+					<details >
+						<summary>Сила</summary>
+						<table class="topAlgin" border="1" >
+							<tr>
+								<td colspan="2" contenteditable="true">16</td>
+								<td><input type="checkbox"><span contenteditable="true">+6</span></td>
+							</tr>
+							<tr>
+								<td colspan="2">+3</td>
+								<td>Спасбросок</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td contenteditable="true" >+3</td>
+								<td>Атлетика</td>
+							</tr>
+						</table>
+					</details>	
 				</div>
 				<div class="statDiv">
-					<table border="1"  width="100%">
-						<tr>
-							<td width="200" colspan="3">Ловкость</td>
-						</tr>
-						<tr>
-							<td colspan="2" contenteditable="true">16</td>
-							<td ><input type="checkbox"><span contenteditable="true">+6</span></td>
-						</tr>
-						<tr>
-							<td colspan="2">+3</td>
-							<td>Спасбросок</td>
-						</tr>
-						<tr>
+				<details>
+					<summary>Ловкость</summary>
+						<table class="topAlgin" border="1" >
+							<tr>
+								<td colspan="2" contenteditable="true">16</td>
+								<td><input type="checkbox"><span contenteditable="true">+6</span></td>
+							</tr>
+							<tr>
+								
 							<td><input type="checkbox"></td>
 							<td contenteditable="true" >+3</td>
 							<td>Акробатика</td>
@@ -132,12 +168,13 @@ body {
 							<td>Скрытность</td>
 						</tr>
 					</table>
+					</details>
+							
 				</div>
 				<div class="statDiv">
-					<table border="1"  width="100%">
-						<tr>
-							<td width="200" colspan="3">Телосложение</td>
-						</tr>
+					<details>
+						<summary>Телосложение</summary>
+					<table border="1"  >
 						<tr>
 							<td colspan="2" contenteditable="true">16</td>
 							<td ><input type="checkbox"><span contenteditable="true">+6</span></td>
@@ -148,14 +185,14 @@ body {
 						</tr>
 						
 					</table>
+				</details>
 				</div>
 			</div>
 			<div>
 				<div class="statDiv">
-					<table border="1"  width="100%">
-						<tr>
-							<td width="200" colspan="3">Интелект</td>
-						</tr>
+					<details>
+						<summary>Интелект</summary>						
+					<table border="1" >
 						<tr>
 							<td colspan="2" contenteditable="true">16</td>
 							<td ><input type="checkbox"><span contenteditable="true">+6</span></td>
@@ -184,18 +221,14 @@ body {
 							<td contenteditable="true" >+3</td>
 							<td>Природа</td>
 						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td contenteditable="true" >+3</td>
-							<td>Религия</td>
-						</tr>
-					</table>	
+					</table>
+				</details>	
 				</div>
 				<div class="statDiv">
-					<table border="1"  width="100%">
-						<tr>
-							<td width="200"colspan="3">Мудрость</td>
-						</tr>
+					<details>
+						<summary>Мудрость</summary>
+					<table border="1"  >
+						
 						<tr>
 							<td colspan="2" contenteditable="true">16</td>
 							<td ><input type="checkbox"><span contenteditable="true">+6</span></td>
@@ -216,11 +249,6 @@ body {
 						</tr>
 						<tr>
 							<td><input type="checkbox"></td>
-							<td сontenteditable="true">+3</td>
-							<td>Медицина</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox"></td>
 							<td contenteditable="true" >+3</td>
 							<td>Проницательность</td>
 						</tr>
@@ -230,12 +258,13 @@ body {
 							<td>Уход за животными</td>
 						</tr>
 					</table>
+				</details>
 				</div>
 				<div class="statDiv">
-					<table border="1"  width="100%">
-					<tr>
-						<td width="200" colspan="3">Харизма</td>
-					</tr>
+					<details>
+						<summary>Харизма</summary>
+					<table border="1"  >
+					
 					<tr>
 						<td colspan="2" contenteditable="true">16</td>
 						<td><input type="checkbox"><span contenteditable="true">+6</span></td>
@@ -265,12 +294,13 @@ body {
 						<td>Убеждение</td>
 					</tr>
 				</table>
+			</details>
 				</div>
 			</div>
             
   </div>
   
-  <div id="hps" class="tabcontent">
+  <div id="atacks" class="tabcontent">
     <div>
         <table  border="1">
             <tr >
@@ -304,6 +334,28 @@ body {
   </div>
 
 <script>
+	var table = document.getElementById("statsTable");
+	function addNewColl() {
+		var rows = table.getElementsByTagName('tr');
+  for(var i = 0, l = rows.length; i < l; i++) {
+    rows[i].insertCell(-1);
+	rows[i].lastChild.appendChild(document.createElement('textarea'));
+  }
+}
+  function dellLastColl() {
+	var rows = table.getElementsByTagName('tr');
+  	for(var i = 0, l = rows.length; i < l; i++) {
+		  if (rows[i].children.length >3)
+    rows[i].deleteCell(-1);
+	
+  }
+  }
+  
+	
+	window.addEventListener = function() {
+  alert('hello');
+  return 'hello';
+}
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
@@ -328,6 +380,17 @@ function openPage(pageName,elmnt,color) {
 }
 
 document.getElementById("defaultOpen").click();
+
+var text = document.documentElement.innerHTML;
+function up(){
+	
+	text = document.documentElement.innerHTML;
+	alert(text);
+}
+document.write(
+    '<a href="data:text/html;charset=utf-8,%EF%BB%BF' + encodeURIComponent(text) + '" download="text.html">save</a>'
+)
+
 </script>
 
 </body>
